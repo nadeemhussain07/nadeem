@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NADEEM HUSSAIN</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </head>
+    
+    <body>
+        <header id="header">
+            
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="#home">HOME</a></li>
+                        <li><a href="#about">ABOUT</a></li>
+                        <li><a href="#services">SERVICES</a></li>
+                        <li><a href="#projects">PORTFOLIO</a></li>
+                        <li><a href="#contact">CONTACT</a></li>
+                        
+                    </ul>
+                </nav>
+              
+                <div class="header-text">
+                    <p> <t> Hi! I Am Nadeem Hussain.</p> <br>
+                    <h1 id="typewriter"></h1>
+                </div>
+                <script>
+                    const lines = [
+    "CEO | AI & Finance Architect",
+    "Bridging Finance, and Web Innovation"
+];
+const speed = 100; // Typing speed (ms)
+const eraseSpeed = 50; // Erasing speed (ms)
+const pause = 1000; // Pause at end of typing/erasing (ms)
+const linePause = 500; // Pause between lines (ms)
+let lineIndex = 0; // Current line
+let charIndex = 0; // Current character
+let isErasing = false;
+const element = document.getElementById("typewriter");
+
+function typeWriter() {
+    const currentLine = lines[lineIndex];
+    let displayText = currentLine.substring(0, charIndex);
+
+    // Highlight "AI" in red
+    if (displayText.includes("AI")) {
+        displayText = displayText.replace("AI", "<span style='color:red;'>AI</span>");
+    }
+
+    // Build full display with all lines
+    let fullDisplay = lines.map((line, idx) => {
+        if (idx < lineIndex) {
+            // Previous lines: full text
+            return line.replace("AI", "<span style='color:red;'>AI</span>");
+        } else if (idx === lineIndex) {
+            // Current line: typed portion
+            return displayText;
+        } else {
+            // Future lines: empty
+            return "";
+        }
+    }).join("<br>");
+
+    element.innerHTML = fullDisplay;
+
+    if (!isErasing && charIndex < currentLine.length) {
+        // Typing
+        charIndex++;
+        setTimeout(typeWriter, speed);
+    } else if (!isErasing && charIndex === currentLine.length && lineIndex < lines.length - 1) {
+        // Move to next line
+        lineIndex++;
+        charIndex = 0;
+        setTimeout(typeWriter, linePause);
+    } else if (!isErasing && charIndex === currentLine.length) {
+        // Start erasing
+        isErasing = true;
+        setTimeout(typeWriter, pause);
+    } else if (isErasing && charIndex > 0) {
+        // Erasing
+        charIndex--;
+        setTimeout(typeWriter, eraseSpeed);
+    } else if (isErasing && charIndex === 0 && lineIndex > 0) {
+        // Move to previous line
+        lineIndex--;
+        charIndex = lines[lineIndex].length;
+        setTimeout(typeWriter, linePause);
+    } else {
+        // Toggle erasing and restart
+        isErasing = false;
+        setTimeout(typeWriter, pause);
+    }
+}
+
+window.onload = () => {
+    typeWriter();
+    // Nav smooth scrolling
+    document.querySelectorAll('nav ul li a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const sectionId = this.getAttribute('href');
+            const section = document.querySelector(sectionId);
+            if (section) {
+                section.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+};
+                </script>
+                
+            </div>
+           <div class="social-footer">
+              
+
+
+                    <ul>
+                        <li>
+                            <tab><a href="https://wa.me/917780807507?text=Hello%20Nadeem" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/brightgem007/" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/nadeem-hussain-a735a21b4/" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+ </header>
+<!-- --------------about --------------------------------------------------------->
+
+
+
+<div id="about">
+  <div class="container">
+    <div class="row">
+      <div class="about-col-1">
+        <img src="user 1.png">
+      </div>
+      <div class="about-col-2">
+        <h1 class="sub-title">About Me</h1>
+        <p>
+          As CEO of ByteAI Robosystems, I lead the intersection of artificial intelligence and financial innovation.
+          With a unique blend of expertise spanning AI development, algorithmic trading, and business leadership,
+          I architect solutions that transform how organizations approach data-driven decision making.
+        </p>
+        <p>
+          My journey encompasses roles as a Trading Analyst at Deemnomics, where I developed high-frequency trading strategies,
+          and Financial Officer at Evergreen Furniture, where I optimized operational efficiency through financial modeling
+          and automation.
+        </p>
+        <p>
+          I specialize in creating intelligent systems that bridge the gap between complex financial markets and cutting-edge
+          AI technologies, delivering measurable results through innovation.
+        </p>
+
+        <div class="tab-titles">
+          <p class="tab-links active-link" onclick="openTab('skills', event)">Skills</p>
+          <p class="tab-links" onclick="openTab('experiences', event)">Experiences</p>
+          <p class="tab-links" onclick="openTab('education', event)">Education</p>
+        </div>
+
+        <div class="tab-contents active-tab" id="skills">
+          <ul>
+            <li><span>AI & Machine Learning</span><br>Designing Bots & Predictive Analytics Interfaces</li>
+            <li><span>Technology Stack</span><br>Web App development, Full Stack Developer</li>
+            <li><span>Finance & Trading</span><br>Financial Modeling</li>
+          </ul>
+        </div>
+
+        <div class="tab-contents" id="experiences">
+          <ul>
+            <li><span>CEO</span><br>ByteAI RoboSystems PVT LTD (Current)</li>
+            <li><span>Trading Analyst</span><br>Deemnomics LLP (Previous)</li>
+            <li><span>Financial Officer</span><br>Evergreen Furniture (Previous)</li>
+          </ul>
+        </div>
+
+        <div class="tab-contents" id="education">
+          <ul>
+            <li><span>Masters of Computer Applications - AI</span><br>Cluster University Srinagar</li>
+            <li><span>Advanced Diploma in Computer Applications</span><br>NIELIT</li>
+            <li><span>Bachelor in Computer and Physics</span><br>University Name</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+
+
+<!-- ------------------------services------------------------- -->
+ 
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">Services</h2>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="icon">🤖</div>
+          <h3 class="title">AI/ML Solutions</h3>
+          <p class="desc">
+            Custom artificial intelligence and machine learning solutions tailored to your business needs, from predictive analytics to automated decision-making systems.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="icon">📈</div>
+          <h3 class="title">Financial Strategy</h3>
+          <p class="desc">
+            Comprehensive financial planning, algorithmic trading strategies, and risk management solutions designed to optimize your investment portfolio.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="icon">💻</div>
+          <h3 class="title">Web Development</h3>
+          <p class="desc">
+            Full-stack web application development using modern frameworks, ensuring scalable, performant, and user-friendly digital solutions.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="icon">🎯</div>
+          <h3 class="title">Cross-Disciplinary Consulting</h3>
+          <p class="desc">
+            Strategic consulting that bridges technology, finance, and AI to help organizations navigate digital transformation and innovation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- -------------projects------------ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects Section</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <section id="projects">
+    <div class="container">
+      <div class="content">
+        <h2>Featured Projects</h2>
+        
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card">
+            <div class="image-wrapper">
+              <img src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&h=600&fit=crop" alt="Ladin Trading Bot">
+              <div class="overlay"></div>
+            </div>
+            
+            <div class="project-content">
+              <h3>Ladin Trading Bot</h3>
+              <p>Advanced high-frequency trading system utilizing machine learning algorithms for automated market analysis and execution.</p>
+              
+              <div class="tags">
+                <span>AI, Algorithm Trading</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Project 2 -->
+          <div class="project-card">
+            <div class="image-wrapper">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop" alt="AI Financial Analytics">
+              <div class="overlay"></div>
+            </div>
+            
+            <div class="project-content">
+              <h3>AI Financial Analytics</h3>
+              <p>Predictive analytics platform for financial market trends using deep learning and real-time data processing.</p>
+              
+              <div class="tags">
+                <span>Product, Development</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Project 3 -->
+          <div class="project-card">
+            <div class="image-wrapper">
+              <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=600&fit=crop" alt="Web Application Suite">
+              <div class="overlay"></div>
+            </div>
+            
+            <div class="project-content">
+              <h3>Web Application Suite</h3>
+              <p>Full-stack web applications built with modern frameworks, focusing on user experience and performance optimization.</p>
+              
+              <div class="tags">
+                <span>Web, Development</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
+  <!-- -------------------contact----------- -->
+   <section id="contact">
+    <div class="container">
+      <div class="wrapper">
+        <h2 class="heading">Get In Touch</h2>
+        <div class="grid">
+          <div class="connect">
+            <h3>Let's Connect</h3>
+            <p>
+              Ready to explore how AI and finance can transform your business? I'm here to discuss innovative solutions tailored to your needs.
+            </p>
+            <div class="contact-option">
+              <div class="icon">📧</div>
+              <div id="email-container">
+                <button onclick="revealInfo('email')" class="reveal-btn">Reveal Email</button>
+              </div>
+            </div>
+            <div class="contact-option">
+              <div class="icon">📱</div>
+              <div id="phone-container">
+                <button onclick="revealInfo('phone')" class="reveal-btn">Reveal Phone</button>
+              </div>
+            </div>
+          </div>
+          <div class="form-container">
+            <form onsubmit="handleSubmit(event)">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your Name" required />
+
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
+
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" placeholder="Tell me about your project..." required></textarea>
+
+              <button type="submit">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function revealInfo(type) {
+      if (type === 'email') {
+        document.getElementById('email-container').innerHTML = '<p class="revealed">nadamnasa007@gmail.com</p>';
+      } else if (type === 'phone') {
+        document.getElementById('phone-container').innerHTML = '<p class="revealed">+91 7780807507</p>';
+      }
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      const formData = {
+        name: event.target.name.value,
+        email: event.target.email.value,
+        message: event.target.message.value
+      };
+      console.log('Form submitted:', formData);
+      alert('Message sent successfully!');
+      event.target.reset();
+    }
+  </script>
+  <!-- // ------------------footer------ -->
+ <footer>
+    <div class="container">
+      <div class="content">
+        <div class="text-center">
+          <div class="name-section">
+            <h3>Nadeem Hussain</h3>
+            <p class="subtitle">CEO | AI & Finance Architect</p>
+          </div>
+          
+          <!-- Neural Network Animation -->
+          <div class="animation">
+            <svg width="300" height="100" viewBox="0 0 300 100">
+              <defs>
+                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#3b82f6" stop-opacity="0" />
+                  <stop offset="50%" stop-color="#3b82f6" stop-opacity="1" />
+                  <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+              
+              <!-- Nodes -->
+              <circle cx="50" cy="25" r="3" fill="#3b82f6" />
+              <circle cx="50" cy="50" r="3" fill="#3b82f6" />
+              <circle cx="50" cy="75" r="3" fill="#3b82f6" />
+              
+              <circle cx="150" cy="20" r="3" fill="#3b82f6" />
+              <circle cx="150" cy="40" r="3" fill="#3b82f6" />
+              <circle cx="150" cy="60" r="3" fill="#3b82f6" />
+              <circle cx="150" cy="80" r="3" fill="#3b82f6" />
+              
+              <circle cx="250" cy="35" r="3" fill="#3b82f6" />
+              <circle cx="250" cy="65" r="3" fill="#3b82f6" />
+              
+              <!-- Connections -->
+              <line x1="53" y1="25" x2="147" y2="20" stroke="url(#lineGradient)" stroke-width="1" />
+              <line x1="53" y1="50" x2="147" y2="40" stroke="url(#lineGradient)" stroke-width="1" />
+              <line x1="53" y1="75" x2="147" y2="80" stroke="url(#lineGradient)" stroke-width="1" />
+              
+              <line x1="153" y1="20" x2="247" y2="35" stroke="url(#lineGradient)" stroke-width="1" />
+              <line x1="153" y1="60" x2="247" y2="65" stroke="url(#lineGradient)" stroke-width="1" />
+            </svg>
+          </div>
+          
+          <div class="footer-bottom">
+            <p class="copyright">
+              © 2024 Nadeem Hussain. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
